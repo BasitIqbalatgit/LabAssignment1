@@ -1,15 +1,31 @@
-import { View, Text, Button } from 'react-native'
-import React from 'react'
+// Home.js
+import React from 'react';
+import { FlatList, StyleSheet, View } from 'react-native';
+import Card from './Card'; // Import your Card component
+import { Button } from 'react-native-elements';
 
-const Home = ({navigation}) => {
-  return (
-    <View>
-      <Text>Welllcome To Home Screen</Text>
-      <Button title='Task 1 ' onPress={()=>navigation.navigate('Login')} />
-      <Button title='Task 2 ' onPress={()=>navigation.navigate('TaskForm')}/>
-      <Button title='Task 3 ' onPress={()=>navigation.navigate('calculator')}/>
-    </View>
-  )
-}
+const Home = ({ route, navigation }) => {
+    const { data } = route.params;
+  
+    return (
+      <View style={styles.container}>
+        <FlatList
+          data={data}
+          renderItem={({ item }) => <Card item={item} />}
+          keyExtractor={(item, index) => index.toString()}
+        />
+        <Button title="Go Back" onPress={() => navigation.goBack()} />
+      </View>
+    );
+  };
+  
+  
+  
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 16,
+  },
+});
 
-export default Home
+export default Home;

@@ -3,11 +3,11 @@ import { StyleSheet, Text, View } from 'react-native';
 import Login from './src/Components/Login';
 import SignUp from './src/Components/Signup';
 import Home from "./src/Components/Home";
+import Homes from "./src/Components/Homes";
+import Calculator from "./src/Components/cal";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TaskForm from './src/Components/TaskForm';
-import Calculator from './src/Components/Calculator';
-
 
 
 
@@ -15,8 +15,9 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer initialScreen = 'Home'>
+    <NavigationContainer initialScreen = 'Homes'>
       <Stack.Navigator>
+      <Stack.Screen name='Homes' component = {Homes} options={{headerShown: false}} />
       <Stack.Screen name='Home' component = {Home} options={{headerShown: false}} />
         <Stack.Screen name='Login' component={Login } options={{ headerShown: false }}/>
         <Stack.Screen name='Signup' component={SignUp } options={{ headerShown: false }}/>
