@@ -2,27 +2,12 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const Card = ({ item }) => {
-    
+const CardTwo = ({ item }) => {
   return (
     <View style={styles.cardContainer}>
-    {item.name &&
-      <Text>Name: {item.name}</Text>
-    }
-
-      <Text>Email: {item.email}</Text>
-     
-      <Text>Password: {item.password}</Text>
-
-      {item.confirmPassword &&
-      <Text>Confirm Password: {item.confirmPassword}</Text>
-    }
-
-
-   
-      
-    
-
+      {Object.keys(item).map((key) => (
+        <Text key={key}>{key}: {item[key]}</Text>
+      ))}
     </View>
   );
 };
@@ -38,4 +23,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Card;
+export default CardTwo;

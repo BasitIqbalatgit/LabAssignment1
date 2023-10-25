@@ -10,7 +10,9 @@ import {
 } from 'react-native';
 import { RadioButton, Checkbox } from 'react-native-paper';
 import ModalDropdown from 'react-native-modal-dropdown';
+import { FlatList } from 'react-native';
 
+import { useNavigation } from '@react-navigation/native';
 
 const TaskForm = () => {
   const [email,setEmail] = useState('');
@@ -20,6 +22,8 @@ const TaskForm = () => {
   const [selectedSubjects, setSelectedSubjects] = useState([]);
   const [skills, setSkills] = useState('');
   const [address, setAddress] = useState('');
+  const navigation = useNavigation();
+  const [data, setData] = useState([]);
 
   const countries = [
     'Select a country',
@@ -101,7 +105,11 @@ const styles = StyleSheet.create({
  },
 });
 
-
+const handleNav =()=>{
+   const newData = [...data, { name, email, gender,selectedCountry, selectedSubjects, skills,address  }];
+    setData(newData);
+    navigation.navigate('nextPage', { data: data });
+}
   return (
     <SafeAreaView style={{ flex: 1 , alignItems:"center",justifyContent:"center"}}>
       <View style={styles.container}>
@@ -216,12 +224,13 @@ const styles = StyleSheet.create({
 
         {/* Submit Button ---------------------------> */}
         <View>
-        <TouchableOpacity style={styles.submitButton}>
+        <TouchableOpacity style={styles.submitButton} onPress={handleNav}>
           <Text style={styles.submitButtonText}>Submit</Text>
         </TouchableOpacity>
           </View>
         </View>
       </View>
+
     </SafeAreaView>
   );
 };

@@ -8,6 +8,7 @@ import Calculator from "./src/Components/cal";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TaskForm from './src/Components/TaskForm';
+import NextPage from './src/Components/nextPage';
 
 
 
@@ -19,6 +20,7 @@ export default function App() {
       <Stack.Navigator>
       <Stack.Screen name='Homes' component = {Homes} options={{headerShown: false}} />
       <Stack.Screen name='Home' component = {Home} options={{headerShown: false}} />
+      <Stack.Screen name='nextPage' component = {NextPage} options={{headerShown: false}} />
         <Stack.Screen name='Login' component={Login } options={{ headerShown: false }}/>
         <Stack.Screen name='Signup' component={SignUp } options={{ headerShown: false }}/>
         <Stack.Screen name='TaskForm' component={TaskForm} options={{headerShown: false}} />
