@@ -1,13 +1,20 @@
 // Card.js
+import { FlatList } from 'native-base';
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 const CardTwo = ({ item }) => {
   return (
     <View style={styles.cardContainer}>
+    <FlatList data ={item}
+    renderItem={()=><View>
+    <Text></Text>
+    </View>}
+
       {Object.keys(item).map((key) => (
         <Text key={key}>{key}: {item[key]}</Text>
       ))}
+      
     </View>
   );
 };

@@ -14,7 +14,7 @@ import { FlatList } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 
-const TaskForm = () => {
+const TaskForm = ({navigation} ) => {
   const [email,setEmail] = useState('');
   const [name, setName] = useState('');
   const [gender, setGender] = useState('male');
@@ -22,9 +22,7 @@ const TaskForm = () => {
   const [selectedSubjects, setSelectedSubjects] = useState([]);
   const [skills, setSkills] = useState('');
   const [address, setAddress] = useState('');
-  const navigation = useNavigation();
-  const [data, setData] = useState([]);
-
+  const data=[];
   const countries = [
     'Select a country',
     'Pakistan',
@@ -106,9 +104,10 @@ const styles = StyleSheet.create({
 });
 
 const handleNav =()=>{
-   const newData = [...data, { name, email, gender,selectedCountry, selectedSubjects, skills,address  }];
-    setData(newData);
-    navigation.navigate('nextPage', { data: data });
+   
+    
+    navigation.navigate('nextPage',{ data: [...data, { name, email, gender,selectedCountry, selectedSubjects, skills,address  }] })
+   
 }
   return (
     <SafeAreaView style={{ flex: 1 , alignItems:"center",justifyContent:"center"}}>
